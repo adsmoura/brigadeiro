@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro de Cliente</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+    <h:form id="cadCliente">
+        <h:outputLabel value="Codigo" for="txtCodigo"/>
+        <h:inputText id="txtCodigo" value="#{clienteBean.c.codigo}">
+        <br/>
+        <h:outputLabel value="Nome" for="txtNome"/>
+        <h:inputText id="txtNome" value="#{clienteBean.c.nome}"/>
+        <br/>
+        <h:outputLabel value="Telefone" for="txtTelefone"/>
+        <h:inputText id="txtTelefone" value="#{clienteBean.c.telefone}"/>
+        <br/>
+        <h:outputLabel value="Email" for="txtEmail"/>
+        <h:inputText id="txtEmail" value="#{clienteBean.c.email}"/>
+        
+        <br/>
+        <h:commandButton value="Salvar" action="#{clienteBean.salvarCliente}">
+            <f:ajax execute="@form" render="tabelaClientes"/>
+        </h:commandButton>
+    </h:form>
+        <br/><br/>
+        <h:dataTable id="tabelaClientes" value="#{clienteBean.clientes}" var="cliente">
+            <h:column>
+                <f:facet name="header">Codigo</f:facet>
+                <h:outputText value="#{cliente.codigo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                <h:outputText value="#{cliente.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Telefone</f:facet>
+                <h:outputText value="#{cliente.telefone}">
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                <h:outputText value="#{cliente.email}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Excluir</f:facet>
+                <h:form>
+                    <h:commandLink action="#{clienteBean.excluirCliente(cliente)}" value="[X]">
+                        <f:ajax execute="@this" render="tabelaClientes"/>
+                    </h:commandLink>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>
