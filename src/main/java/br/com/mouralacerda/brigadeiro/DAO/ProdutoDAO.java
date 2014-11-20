@@ -31,8 +31,16 @@ public class ProdutoDAO {
         List<Produto> Produto = query.getResultList();
         return Produto;
     }
-    public void excluir(){
-        
+    public void excluir(Produto p){
+        em.getTransaction().begin();
+        p = em.merge(p);
+        em.remove(p);
+        em.getTransaction().commit();
+    }
+    
+    public Produto consultarProduto(int codigo){
+        Produto p = em.find(Produto.class, codigo);
+        return p;
     }
 }
 

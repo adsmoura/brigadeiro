@@ -8,6 +8,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Olá seja bem vindo ao sistema Brigadeiro.</h1>
+        <br/>
+        <h3>Por favor acesse os links abaixo<h3>
+                <br/>
+                <a href="CadastroCliente.xhtml">Cadastro de Clientes</a>
+                <br/>
+                <a href="CadastroProduto.xhtml">Cadastro de Produtos </a>
     </body>
 </html>

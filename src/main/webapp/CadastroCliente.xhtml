@@ -15,16 +15,16 @@ and open the template in the editor.
     <h:body>
     <h:form id="cadCliente">
         <h:outputLabel value="Codigo" for="txtCodigo"/>
-        <h:inputText id="txtCodigo" value="#{clienteBean.c.codigo}">
+        <h:inputText id="txtCodigo" value="#{clienteBean.cliente.codigo}">
         <br/>
         <h:outputLabel value="Nome" for="txtNome"/>
-        <h:inputText id="txtNome" value="#{clienteBean.c.nome}"/>
+        <h:inputText id="txtNome" value="#{clienteBean.cliente.nome}"/>
         <br/>
         <h:outputLabel value="Telefone" for="txtTelefone"/>
-        <h:inputText id="txtTelefone" value="#{clienteBean.c.telefone}"/>
+        <h:inputText id="txtTelefone" value="#{clienteBean.cliente.telefone}"/>
         <br/>
         <h:outputLabel value="Email" for="txtEmail"/>
-        <h:inputText id="txtEmail" value="#{clienteBean.c.email}"/>
+        <h:inputText id="txtEmail" value="#{clienteBean.cliente.email}"/>
         
         <br/>
         <h:commandButton value="Salvar" action="#{clienteBean.salvarCliente}">

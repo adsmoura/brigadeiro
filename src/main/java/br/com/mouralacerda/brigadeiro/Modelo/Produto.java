@@ -6,14 +6,26 @@
 
 package br.com.mouralacerda.brigadeiro.Modelo;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author Marcos.Diegues
  */
-public class Produto {
+@Entity
+public class Produto implements Serializable {
     
+    @Id
+    @Column(name = "codigo")
     private int codigo;
+    
+    @Column(name = "descricao")
     private String descricao;
+    
+    @Column(name = "valor")
     private Float valor;
 
     public int getCodigo() {

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Cadastro de Produtos</title>
+        <meta name="viewport" content="width=device-width"/>
+    </head>
+    <body>
+        <h:form id="cadProduto">
+         <h:outputLabel value="Códgio" for="txtCodigo"/>
+         <h:inputText id="txtCodigo" value="#{produtoBean.produto.codigo}"/>
+        <br/>
+        <h:outputLabel value="Descrição" for="txtDescricao"/>
+        <h:inputText id="txtDescricao" value="#{produtoBean.produto.descricao}"/>
+        <br/>
+        <h:outputLabel value="Valor" for="txtValor"/>
+        <h:inputText id="txtValor" value="#{produtoBean.produto.valor}"/>
+        </h:form>
+        <br/>
+        
+        <h:dataTable id="tabelaProdutos" value="#{produtoBean.produtos}" var="produtos">
+            <h:column>
+                <f:facet name="header">Código</f:facet>
+                <h:outputText value="#{produto.codigo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Descrição</f:facet>
+                <h:outputText value="#{produto.descricao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Valor</f:facet>
+                <h:outputText value="#{produto.valor}">
+                    <f:convertDateTime type="date" pattern="d/M/yyyy" timeZone="GMT-3"/>
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Excluir</f:facet>
+                <h:form>
+                    <h:commandLink action="#{produtoBean.excluirProduto(produto)}" value="[X]">
+                        <f:ajax execute="@this" render="tabelaProdutos"/>
+                    </h:commandLink>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+    </body>
+</html>
+
